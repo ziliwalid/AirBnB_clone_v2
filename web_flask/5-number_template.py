@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """
 starts a Flask web application
@@ -24,6 +23,22 @@ def hbnb():
 def cisfun(text):
     """shows c followed by val of var"""
     return 'C ' + text.replace('_', ' ')
+
+@app.route('/python', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
+def pythoniscool(text='is cool'):
+    """shows some stuff (explained in the task)"""
+    return 'Python ' + text.replace('_', ' ')
+
+@app.route('/number/<int:n>', strict_slashes=False)
+def imanumber(n):
+    """shows something if n is a num"""
+    return "{:d} is a number".format(n)
+
+@app.route('/number_template/<int:n>', strict_slashes=False)
+def numsTemp(n):
+    """does some displaying"""
+    return render_template('5-number.html', n=n)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='5000')
